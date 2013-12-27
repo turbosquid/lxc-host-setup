@@ -14,6 +14,7 @@ sudo apt-get -y dist-upgrade
 sudo apt-get -y install git
 
 sudo apt-get -y install nginx
+sudo apt-get -y install build-essential
 sudo /etc/init.d/nginx start
  
 # Install Ruby and required gems
