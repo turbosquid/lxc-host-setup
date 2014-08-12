@@ -20,7 +20,6 @@ sudo /etc/init.d/nginx start
 # Install Ruby and required gems
 sudo apt-get -y install ruby1.9.3
 sudo gem install puppet --no-ri --no-rdoc
-sudo gem install librarian-puppet --no-ri --no-rdoc
 sudo gem install puppet_pal --no-ri --no-rdoc
  
 # Install lxc and vagrant-lxc
