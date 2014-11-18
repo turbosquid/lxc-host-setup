@@ -5,7 +5,7 @@
 # The base distribution should be Ubuntu 13.04 (x64). If using a VM you should probably intall the VM tools
 # To run: wget -qO- https://raw.github.com/turbosquid/lxc-host-setup/master/host-setup.sh | bash
  
-set -iex
+set -e
  
 # Update Ubuntu
 sudo apt-get -y update # Be sure eveything is up to date
@@ -20,7 +20,6 @@ sudo /etc/init.d/nginx start
 # Install Ruby and required gems
 sudo apt-get -y install ruby1.9.3
 sudo gem install puppet --no-ri --no-rdoc
-sudo gem install librarian-puppet --no-ri --no-rdoc
 sudo gem install puppet_pal --no-ri --no-rdoc
  
 # Install lxc and vagrant-lxc
@@ -32,8 +31,10 @@ VAGRANT_DEB=vagrant_1.3.3_x86_64.deb
 wget -nc "http://files.vagrantup.com/packages/db8e7a9c79b23264da129f55cf8569167fc22415/$VAGRANT_DEB"
 sudo dpkg --install $VAGRANT_DEB
 # rm -f $VAGRANT_DEB
-sudo -i vagrant plugin install vagrant-lxc
-vagrant plugin install vagrant-lxc
+wget -nc https://s3.amazonaws.com/green-lantern-files/vagrant-lxc/vagrant-lxc-0.8.0.gem -O /tmp/vagrant-lxc-0.8.0.gem
+vagrant plugin install /tmp/vagrant-lxc-0.8.0.gem
+sudo -i vagrant plugin install  /tmp/vagrant-lxc-0.8.0.gem
+
  
 # Now you have almost everything installed. One final step – you will want to add the following line to /etc/environment:
 VAGRANT_ENV="VAGRANT_DEFAULT_PROVIDER=lxc"
