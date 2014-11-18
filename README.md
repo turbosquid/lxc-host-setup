@@ -7,5 +7,10 @@ To run:
 
     curl -Lo- https://raw.github.com/turbosquid/lxc-host-setup/master/host-setup.sh | bash # On 13.04
     
-On Ubuntu 14.04 you will need to download the script first, and then run it -- something about later versions of apt-get seem to break piping a script directly into bash
+On Ubuntu 14.04 you will need to download the script first, and then run it -- something about later versions of apt-get seems to break piping a script directly into bash:
+
+    wget https://raw.github.com/turbosquid/lxc-host-setup/master/host-setup.sh
+    bash host-setup.sh
+   
+ 
 
