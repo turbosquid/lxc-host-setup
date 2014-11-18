@@ -15,6 +15,9 @@ sudo apt-get -y install git
 
 sudo apt-get -y install nginx
 sudo apt-get -y install build-essential
+sudo apt-get -y install nfs-common
+sudo apt-get -y install ssh
+
 sudo /etc/init.d/nginx start
  
 # Install Ruby and required gems
