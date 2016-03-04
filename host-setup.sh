@@ -31,7 +31,7 @@ sudo apt-get -y install lxc cgroup-lite redir # Install LXC and some additional 
 # At this point, you will have lxc installed. You could begin creating lxc containers now, but being able to use vagrant makes things a lot nicer. So install vagrant and the vagrant lxc plugin:
 # Pull down the latest .deb file and install it
 VAGRANT_DEB=vagrant_1.3.3_x86_64.deb
-wget -nc "http://files.vagrantup.com/packages/db8e7a9c79b23264da129f55cf8569167fc22415/$VAGRANT_DEB"
+wget -nc "https://s3.amazonaws.com/green-lantern-files/debs/$VAGRANT_DEB"
 sudo dpkg --install $VAGRANT_DEB
 # rm -f $VAGRANT_DEB
 wget -nc https://s3.amazonaws.com/green-lantern-files/vagrant-lxc/vagrant-lxc-0.8.0.gem -O /tmp/vagrant-lxc-0.8.0.gem
