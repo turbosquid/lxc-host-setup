@@ -8,29 +8,29 @@
 set -e
  
 # Update Ubuntu
-sudo apt-get -y update # Be sure eveything is up to date
-sudo apt-get -y dist-upgrade
+sudo apt-get -y update  </dev/null # Be sure eveything is up to date
+sudo apt-get -y dist-upgrade  </dev/null
  
-sudo apt-get -y install git
+sudo apt-get -y install git  </dev/null
 
-sudo apt-get -y install nginx
-sudo apt-get -y install build-essential
-sudo apt-get -y install nfs-common
-sudo apt-get -y install ssh
+sudo apt-get -y install nginx  </dev/null
+sudo apt-get -y install build-essential  </dev/null
+sudo apt-get -y install nfs-common  </dev/null
+sudo apt-get -y install ssh  </dev/null
 
 sudo /etc/init.d/nginx start
  
 # Install Ruby and required gems
-sudo apt-get -y install ruby1.9.3
+sudo apt-get -y install ruby1.9.3  </dev/null
 sudo gem install puppet --no-ri --no-rdoc
 sudo gem install puppet_pal --no-ri --no-rdoc
  
 # Install lxc and vagrant-lxc
-sudo apt-get -y install lxc cgroup-lite redir # Install LXC and some additional useful bits
+sudo apt-get -y install lxc cgroup-lite redir  </dev/null # Install LXC and some additional useful bits
  
 # At this point, you will have lxc installed. You could begin creating lxc containers now, but being able to use vagrant makes things a lot nicer. So install vagrant and the vagrant lxc plugin:
 # Pull down the latest .deb file and install it
-VAGRANT_DEB=vagrant_1.3.3_x86_64.deb
+VAGRANT_DEB=vagrant_1.4.3_x86_64.deb
 wget -nc "https://s3.amazonaws.com/green-lantern-files/debs/$VAGRANT_DEB"
 sudo dpkg --install $VAGRANT_DEB
 # rm -f $VAGRANT_DEB
@@ -38,7 +38,15 @@ wget -nc https://s3.amazonaws.com/green-lantern-files/vagrant-lxc/vagrant-lxc-0.
 vagrant plugin install /tmp/vagrant-lxc-0.8.0.gem
 sudo -i vagrant plugin install  /tmp/vagrant-lxc-0.8.0.gem
 
- 
+echo "Installing ansible..."
+sudo apt-get -y install software-properties-common </dev/null
+sudo apt-add-repository -y ppa:ansible/ansible </dev/null
+sudo apt-get update </dev/null
+sudo apt-get -y install ansible </dev/null
+wget https://gist.githubusercontent.com/mowings/2b3820d9f484c1add8f3cd255acbceac/raw/00ed2247adc7afd5f31e1a0e1ed0ea9ecf728927/ansible_pal
+chmod 755 ansible_pal
+sudo cp ansible_pal /usr/local/bin
+
 # Now you have almost everything installed. One final step – you will want to add the following line to /etc/environment:
 VAGRANT_ENV="VAGRANT_DEFAULT_PROVIDER=lxc"
 grep -q "$VAGRANT_ENV" /etc/environment || sudo sh -c "echo '$VAGRANT_ENV' >> /etc/environment"
