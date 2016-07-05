@@ -17,6 +17,7 @@ sudo apt-get -y install nginx  </dev/null
 sudo apt-get -y install build-essential  </dev/null
 sudo apt-get -y install nfs-common  </dev/null
 sudo apt-get -y install ssh  </dev/null
+sudo apt-get -y install python-pip python-dev </dev/null
 
 sudo /etc/init.d/nginx start
  
@@ -39,10 +40,7 @@ vagrant plugin install /tmp/vagrant-lxc-0.8.0.gem
 sudo -i vagrant plugin install  /tmp/vagrant-lxc-0.8.0.gem
 
 echo "Installing ansible..."
-sudo apt-get -y install software-properties-common </dev/null
-sudo apt-add-repository -y ppa:ansible/ansible </dev/null
-sudo apt-get update </dev/null
-sudo apt-get -y install ansible </dev/null
+sudo pip install ansible==2.0.2.0
 wget https://gist.githubusercontent.com/mowings/2b3820d9f484c1add8f3cd255acbceac/raw/00ed2247adc7afd5f31e1a0e1ed0ea9ecf728927/ansible_pal
 chmod 755 ansible_pal
 sudo cp ansible_pal /usr/local/bin
