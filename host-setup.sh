@@ -20,6 +20,7 @@ sudo apt-get -y install ssh  </dev/null
 sudo apt-get -y install python-pip python-dev </dev/null
 sudo apt-get -y install libssl-dev </dev/null
 sudo apt-get -y install libffi-dev </dev/null
+sudo apt-get -y install ntp  </dev/null
 
 sudo /etc/init.d/nginx start
  
