@@ -45,7 +45,7 @@ sudo -i vagrant plugin install  /tmp/vagrant-lxc-0.8.0.gem
 echo "Installing ansible..."
 sudo pip install markupsafe
 sudo pip install ansible==2.0.2.0
-wget https://gist.githubusercontent.com/mowings/2b3820d9f484c1add8f3cd255acbceac/raw/00ed2247adc7afd5f31e1a0e1ed0ea9ecf728927/ansible_pal
+wget https://gist.githubusercontent.com/mowings/2b3820d9f484c1add8f3cd255acbceac/raw/5bbb2579c7c1beed8fb76ff934f39082c18a76c0/ansible_pal
 chmod 755 ansible_pal
 sudo cp ansible_pal /usr/local/bin
 
